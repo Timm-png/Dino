@@ -1,7 +1,8 @@
 import pygame
 import random
 
-pygame.init()
+pygame.mixer.init()
+pygame.font.init()
 
 # FPS
 FPS = 120
@@ -33,6 +34,9 @@ dino_y = D_Height - dino_Height - 100
 score = 0
 img_counter = 3
 Dino_image = [pygame.image.load('Fils\Img\Dino_1.png'), pygame.image.load('Fils\Img\Dino_2.png'), pygame.image.load('Fils\Img\Dino_3.png')]
+
+cloud_img = [pygame.image.load('Fils\Img\oblaco_1.png'), pygame.image.load('Fils\Img\oblaco_2.png')]
+stone_img = [pygame.image.load('Fils\Img\camen_1.png'), pygame.image.load('Fils\Img\camen_2.png')]
 
 
 def draw_dino():
@@ -124,9 +128,6 @@ def draw_cactus(array):
             Object.return_cactus(radius, height, width, img)
 
 
-cloud_img = [pygame.image.load('Fils\Img\oblaco_1.png'), pygame.image.load('Fils\Img\oblaco_2.png')]
-stone_img = [pygame.image.load('Fils\Img\camen_1.png'), pygame.image.load('Fils\Img\camen_2.png')]
-
 
 def open_obj():
     choice = random.randrange(0, 2)
@@ -158,6 +159,7 @@ def move_obj(stone, cloud):
 #Прыжок
 mate_jump = False
 jump_counter = 30
+
 
 def jamp():
    global dino_y, jump_counter, mate_jump
