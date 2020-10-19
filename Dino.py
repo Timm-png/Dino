@@ -1,5 +1,6 @@
 import pygame
 import random
+import os, sys
 
 pygame.mixer.init()
 pygame.font.init()
@@ -11,18 +12,17 @@ clock = pygame.time.Clock()
 #Разрешение экрана
 D_Width = 1000
 D_Height = 600
-land = pygame.image.load("Fils\Img\Land.png")
+land = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/Land.png")),"Land.png"))
 display = pygame.display.set_mode((D_Width, D_Height))
-
-pygame.mixer.music.load("Fils\Sound\BackGround.mp3")
-RIP = pygame.mixer.Sound("Fils\Sound\Jump_RIP.wav")
-Button_sound = pygame.mixer.Sound("Fils\Sound\Button.wav")
+pygame.mixer.music.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Sound/BackGround.mp3")),"BackGround.mp3"))
+RIP = pygame.mixer.Sound(os.path.join(os.path.dirname(os.path.realpath("Fils/Sound/Jump_RIP.wav")),"Jump_RIP.wav"))
+Button_sound = pygame.mixer.Sound(os.path.join(os.path.dirname(os.path.realpath("Fils/Sound/Button.wav")),"Button.wav"))
 
 #Название
 pygame.display.set_caption('Run dino, run!')
 
 #Иконка
-icon = pygame.image.load('Fils\Img\icon.jpg')
+icon = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/icon.jpg")),"icon.jpg"))
 pygame.display.set_icon(icon)
 
 #Dino
@@ -33,10 +33,10 @@ dino_y = D_Height - dino_Height - 100
 
 score = 0
 img_counter = 3
-Dino_image = [pygame.image.load('Fils\Img\Dino_1.png'), pygame.image.load('Fils\Img\Dino_2.png'), pygame.image.load('Fils\Img\Dino_3.png')]
+Dino_image = [pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/Dino_1.png")),"Dino_1.png")), pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/Dino_2.png")),"Dino_2.png")), pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/Dino_3.png")),"Dino_3.png"))]
 
-cloud_img = [pygame.image.load('Fils\Img\oblaco_1.png'), pygame.image.load('Fils\Img\oblaco_2.png')]
-stone_img = [pygame.image.load('Fils\Img\camen_1.png'), pygame.image.load('Fils\Img\camen_2.png')]
+cloud_img = [pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/oblaco_1.png")),"oblaco_1.png")), pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/oblaco_2.png")),"oblaco_2.png"))]
+stone_img = [pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/camen_1.png")),"camen_1.png")), pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/camen_2.png")),"camen_2.png"))]
 
 
 def draw_dino():
@@ -48,8 +48,8 @@ def draw_dino():
 
 
 #Objeck
-cactus_image = [pygame.image.load('Fils\Img\Cac_1.png'), pygame.image.load('Fils\Img\Cac_2.png'), pygame.image.load('Fils\Img\Cac_3.png')]
-cactus_op = [40, 420, 50, 415, 45, 405]
+Cactustus_image = [pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/Cactus_1.png")),"Cactus_1.png")), pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/Cactus_2.png")),"Cactus_2.png")), pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/Cactus_3.png")),"Cactus_3.png"))]
+Cactustus_op = [40, 420, 50, 415, 45, 405]
 radius = 0
 class Object:
     def __init__(self, x, y, width, image, speed):
@@ -69,7 +69,7 @@ class Object:
             return False
 
 
-    def return_cactus(self, radius, y, width, image):
+    def return_Cactustus(self, radius, y, width, image):
         self.x = radius
         self.y = y
         self.width = width
@@ -77,23 +77,23 @@ class Object:
         display.blit(self.image, (self.x, self.y))
 
 
-def create_cactus(array):
+def create_Cactustus(array):
     choice = random.randrange(0, 3)
-    img = cactus_image[choice]
-    width = cactus_op[choice * 2]
-    height = cactus_op[choice * 2 + 1]
+    img = Cactustus_image[choice]
+    width = Cactustus_op[choice * 2]
+    height = Cactustus_op[choice * 2 + 1]
     array.append(Object(D_Width + 50, height, width, img, 5))
 
     choice = random.randrange(0, 3)
-    img = cactus_image[choice]
-    width = cactus_op[choice * 2]
-    height = cactus_op[choice * 2 + 1]
+    img = Cactustus_image[choice]
+    width = Cactustus_op[choice * 2]
+    height = Cactustus_op[choice * 2 + 1]
     array.append(Object(D_Width + 700, height, width, img, 5))
 
     choice = random.randrange(0, 3)
-    img = cactus_image[choice]
-    width = cactus_op[choice * 2]
-    height = cactus_op[choice * 2 + 1]
+    img = Cactustus_image[choice]
+    width = Cactustus_op[choice * 2]
+    height = Cactustus_op[choice * 2 + 1]
     array.append(Object(D_Width + 1450, height, width, img, 5))
 
 
@@ -114,18 +114,18 @@ def find_radius(array):
     return radius
 
 
-def draw_cactus(array):
+def draw_Cactustus(array):
     for Object in array:
         check = Object.move()
         if not check:
             radius = find_radius(array)
 
             choice = random.randrange(0, 3)
-            img = cactus_image[choice]
-            width = cactus_op[choice * 2]
-            height = cactus_op[choice * 2 + 1]
+            img = Cactustus_image[choice]
+            width = Cactustus_op[choice * 2]
+            height = Cactustus_op[choice * 2 + 1]
 
-            Object.return_cactus(radius, height, width, img)
+            Object.return_Cactustus(radius, height, width, img)
 
 
 
@@ -147,13 +147,13 @@ def move_obj(stone, cloud):
     if not check:
         choice = random.randrange(0, 2)
         img_stone = stone_img[choice]
-        stone.return_cactus(D_Width, 500 + random.randrange(10, 80), stone.width, img_stone)
+        stone.return_Cactustus(D_Width, 500 + random.randrange(10, 80), stone.width, img_stone)
 
     check = cloud.move()
     if not check:
         choice = random.randrange(0, 2)
         img_cloud = cloud_img[choice]
-        cloud.return_cactus(D_Width, random.randrange(0, 200), cloud.width, img_cloud)
+        cloud.return_Cactustus(D_Width, random.randrange(0, 200), cloud.width, img_cloud)
 
 
 #Прыжок
@@ -172,7 +172,7 @@ def jamp():
 
 
 #Text
-def Print_text(message, x, y, font_color = (0, 0, 0), font_type = ('Fils\Other\8930.ttf'), font_size = 30):
+def Print_text(message, x, y, font_color = (0, 0, 0), font_type = (os.path.join(os.path.dirname(os.path.realpath("Fils/Other/8930.ttf")),"8930.ttf")), font_size = 30):
     font_type = pygame.font.Font(font_type, font_size)
     text = font_type.render(message, True, font_color)
     display.blit(text, (x, y))
@@ -250,8 +250,8 @@ def RunGame():
 
    game = True
 
-   cactus_arr = []
-   create_cactus(cactus_arr)
+   Cactustus_arr = []
+   create_Cactustus(Cactustus_arr)
 
    stone, cloud = open_obj()
    while game:
@@ -275,11 +275,11 @@ def RunGame():
        score += 0.1
        Print_text("Очки: " + str(int(score)), 20, 10)
 
-       draw_cactus(cactus_arr)
+       draw_Cactustus(Cactustus_arr)
        draw_dino()
        move_obj(stone, cloud)
 
-       if check_collision(cactus_arr):
+       if check_collision(Cactustus_arr):
           pygame.mixer.music.pause()
           pygame.mixer.Sound.play(RIP, 0)
           game = False
