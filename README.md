@@ -1,3 +1,1 @@
-Hello
-
-Dino needs pygame to work
+`pip install pygame`
