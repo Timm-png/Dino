@@ -14,7 +14,7 @@ D_Width = 1000
 D_Height = 600
 land = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/Land.png")),"Land.png"))
 display = pygame.display.set_mode((D_Width, D_Height))
-pygame.mixer.music.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Sound/BackGround.mp3")),"BackGround.mp3"))
+pygame.mixer.music.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Sound/BackGround.wav")),"BackGround.wav"))
 RIP = pygame.mixer.Sound(os.path.join(os.path.dirname(os.path.realpath("Fils/Sound/Jump_RIP.wav")),"Jump_RIP.wav"))
 Button_sound = pygame.mixer.Sound(os.path.join(os.path.dirname(os.path.realpath("Fils/Sound/Button.wav")),"Button.wav"))
 
