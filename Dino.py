@@ -14,22 +14,17 @@ clock = pygame.time.Clock()
 # Разрешение экрана
 D_Width = 1000
 D_Height = 600
-land = pygame.image.load(os.path.join(os.path.dirname(
-    os.path.realpath("Fils/Img/Land.png")), "Land.png"))
+land = pygame.image.load("Fils/Img/Land.png")
 display = pygame.display.set_mode((D_Width, D_Height))
-pygame.mixer.music.load(os.path.join(os.path.dirname(
-    os.path.realpath("Fils/Sound/BackGround.wav")), "BackGround.wav"))
-RIP = pygame.mixer.Sound(os.path.join(os.path.dirname(
-    os.path.realpath("Fils/Sound/Jump_RIP.wav")), "Jump_RIP.wav"))
-Button_sound = pygame.mixer.Sound(os.path.join(os.path.dirname(
-    os.path.realpath("Fils/Sound/Button.wav")), "Button.wav"))
+pygame.mixer.music.load("Fils/Sound/BackGround.wav")
+RIP = pygame.mixer.Sound("Fils/Sound/Jump_RIP.wav")
+Button_sound = pygame.mixer.Sound("Fils/Sound/Button.wav")
 
 # Название
 pygame.display.set_caption('Run dino, run!')
 
 # Иконка
-icon = pygame.image.load(os.path.join(os.path.dirname(
-    os.path.realpath("Fils/Img/icon.jpg")), "icon.jpg"))
+icon = pygame.image.load("Fils/Img/icon.jpg")
 pygame.display.set_icon(icon)
 
 # Dino
@@ -40,13 +35,13 @@ dino_y = D_Height - dino_Height - 100
 
 score = 0
 img_counter = 3
-Dino_image = [pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/Dino_1.png")), "Dino_1.png")), pygame.image.load(os.path.join(os.path.dirname(
-    os.path.realpath("Fils/Img/Dino_2.png")), "Dino_2.png")), pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/Dino_3.png")), "Dino_3.png"))]
+Dino_image = [pygame.image.load("Fils/Img/Dino_1.png"), pygame.image.load(
+    "Fils/Img/Dino_2.png"), pygame.image.load("Fils/Img/Dino_3.png")]
 
-cloud_img = [pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/oblaco_1.png")), "oblaco_1.png")),
-             pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/oblaco_2.png")), "oblaco_2.png"))]
-stone_img = [pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/camen_1.png")), "camen_1.png")),
-             pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/camen_2.png")), "camen_2.png"))]
+cloud_img = [pygame.image.load("Fils/Img/oblaco_1.png"),
+             pygame.image.load("Fils/Img/oblaco_2.png")]
+stone_img = [pygame.image.load("Fils/Img/camen_1.png"),
+             pygame.image.load("Fils/Img/camen_2.png")]
 
 
 def draw_dino():
@@ -58,8 +53,8 @@ def draw_dino():
 
 
 # Objeck
-Cactustus_image = [pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/Cactus_1.png")), "Cactus_1.png")), pygame.image.load(os.path.join(os.path.dirname(
-    os.path.realpath("Fils/Img/Cactus_2.png")), "Cactus_2.png")), pygame.image.load(os.path.join(os.path.dirname(os.path.realpath("Fils/Img/Cactus_3.png")), "Cactus_3.png"))]
+Cactustus_image = [pygame.image.load("Fils/Img/Cactus_1.png"), pygame.image.load(
+    "Fils/Img/Cactus_2.png"), pygame.image.load("Fils/Img/Cactus_3.png")]
 
 Cactustus_op = [40, 420, 50, 415, 45, 405]
 radius = 0
@@ -240,7 +235,7 @@ def game_over():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                quit()
+                sys.exit()
             keys = pygame.key.get_pressed()
             if keys[pygame.K_RETURN]:
                 score = 0
@@ -272,7 +267,7 @@ def RunGame():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                quit()
+                sys.exit()
             keys = pygame.key.get_pressed()
             if keys[pygame.K_ESCAPE]:
                 pause()
@@ -308,4 +303,4 @@ def RunGame():
 while RunGame():
     pass
 pygame.quit()
-quit()
+sys.exit()
