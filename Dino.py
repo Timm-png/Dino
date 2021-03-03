@@ -104,8 +104,6 @@ def create_Cactustus(array):
     array.append(Object(D_Width + 1450, height, width, img, 5))
 
 # for cactus
-
-
 def find_radius(array):
     maximum = max(array[0].x, array[1].x, array[2].x)
     if maximum < D_Width:
